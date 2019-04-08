@@ -72,15 +72,34 @@ def getPalavra(alfabeto):
 				ok = True
 	return palavra
 
+def processa_palavra(lista_estados, palavra):
+	"""
+	Busca pelo estado inicial do autômato
+	A cada símbolo da palavra, verificar no dict de transição do estado atual
+	qual é o nome do próximo estado e armazenar esse valor em 'nome_prox'.
+	Procurar na lista de estados qual estado possui o '.nome' igual ao 'nome_prox' e torná-lo o atual
+	Se o último estado for final, então o atômato aceita a palavra
+	"""
+	for e in lista_estados:
+		if e.inicial == True:
+			e_atual = e
+
+	for simb in  palavra:
+		nome_prox = e_atual.transicao[simb]
+		for e in lista_estados:
+			if e.nome == nome_prox:
+				e_atual = e
+	return "é aceita" if e_atual.final is True else "não é aceita"
+
 def main():
-	alfabeto      = input("Entre com o alfabeto: ")
+	alfabeto	  = input("Entre com o alfabeto: ")
 	qtd_estados   = int(input("Digite a quantidade de estados: "))
 	lista_estados = criar_estados(alfabeto, qtd_estados)
 	setInicial(lista_estados)
 	setTransicao(lista_estados, alfabeto)
 	setFinal(lista_estados)
 	palavra       = getPalavra(alfabeto)
-
+	print("A palavra", palavra, processa_palavra(lista_estados, palavra), "pelo autômato")
 
 if __name__ == '__main__':
 	main()
