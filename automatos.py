@@ -157,13 +157,14 @@ def getPalavra(alfabeto):
 	caso contenha símbolos diferente do alfabeto, a palavra não
 	será aceita
 	"""
-	while True:
+	i = True
+	while i:
 		palavra = input('Digite a palavra a ser preocessada: ')
 		for simb in palavra:
 			if alfabeto.count(simb) == 0:
 				print('A palavra contém símbolos não existentes no alfabeto')
 			else:
-				False
+				i = False
 	return palavra
 
 def processa_palavra(lista_estados, palavra):
