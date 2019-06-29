@@ -67,12 +67,12 @@ def le_arquivo(arquivo):
 			lista.clear()
 	f.close()
 
-	sair = True
-	while sair:
+	sair = False
+	while sair == False:
 		palavra = input('Palavra a ser processada: ')
 		print('A palavra', palavra, processa_palavra(lista_estados, palavra), 'pelo', tipo[0])
 		i = input('Sair? (S/N) ')
-		sair = (False) if i.upper() == 'S' else (True)
+		sair = (True) if i.upper() == 'S' else (False)
 
 def criar_estados(alfabeto, qtd_estados):
     """
@@ -211,7 +211,7 @@ def processa_palavraAFD(lista_estados, palavra):
                 e_atual = e
     return 'é aceita' if e_atual.final is True else 'não é aceita'
 
-def processa_palavraAFN(lista_estados, palavra):a
+def processa_palavraAFN(lista_estados, palavra):
     for e in lista_estados:
         if e.inicial == True:
             e_atual = e
