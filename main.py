@@ -1,5 +1,6 @@
 import sys
-import automatos
+import Modularizado.automatos
+import Pilha.automatos_pilha as aut_pilha
 
 def main():
 	"""
@@ -47,4 +48,6 @@ def main():
 		print('Arquivo não encontrado')
 
 if __name__ == '__main__':
-    main()
+	arquivo = sys.argv[1]
+	print(arquivo)
+	aut_pilha.le_arquivo(arquivo)
